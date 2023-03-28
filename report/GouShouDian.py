@@ -1,10 +1,8 @@
-import os
 import datetime
-from decimal import Decimal
-import re
+import os
+
 from openpyxl.cell.read_only import EmptyCell
 from openpyxl.reader.excel import load_workbook
-from openpyxl.styles import PatternFill
 from openpyxl.worksheet.worksheet import Worksheet
 
 global global_self
@@ -355,4 +353,8 @@ def set_m_gauge_value(global_self, x):
 
 # 获取字符串里的数字
 def get_numbers(s):
-    return ''.join(re.findall(r'\d+', s))
+    numbers = ''
+    for c in s:
+        if c.isdigit():
+            numbers += c
+    return numbers
