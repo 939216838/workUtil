@@ -8,6 +8,13 @@ from openpyxl.worksheet.worksheet import Worksheet
 global global_self
 
 
+def is_none(cell):
+    if cell.value is None:
+        print(f"当前单元格{cell.row}行{cell.column}列的值为空")
+        cell: Cell
+        cell.value = float(0)
+
+
 # 点击了开始按钮
 def start(self, path, wx):
     # 获取指定path路径下的文件列表
