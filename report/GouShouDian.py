@@ -1,6 +1,7 @@
 import datetime
 import os
 
+from openpyxl.cell import Cell
 from openpyxl.cell.read_only import EmptyCell
 from openpyxl.reader.excel import load_workbook
 from openpyxl.worksheet.worksheet import Worksheet
@@ -13,6 +14,13 @@ def is_none(cell):
         print(f"当前单元格{cell.row}行{cell.column}列的值为空")
         cell: Cell
         cell.value = float(0)
+
+
+def check_none(*cells):
+    for cell in cells:
+        if cell.value is None:
+            print(f"当前单元格{cell.row}行{cell.column}列的值为空")
+            cell.value = float(0)
 
 
 # 点击了开始按钮
@@ -159,137 +167,141 @@ def diwubu(path, list_file_name):
 def laststep(path, list_file_name):
     sheet, manual_table_name, workbook = get_workbook_sheet(path, list_file_name, "空白表样", "购售电情况表", False,
                                                             False)
-    print(path)
-    print(list_file_name)
+
     # 第一种 获得cell
-    cell_0 = sheet["B4"]
     # 定义变量类型的方式之一  变量名: 类名
     sheet: Worksheet
-
-    # print(sheet.max_row)
-    # sheet.insert_rows(12, 1)
-    # 第二种 获得cell
-    # cell_one = sheet.cell(12, 4)
-    # value1 = cell_one.value
-
-    # cell_two = sheet.cell(13, 4)
-    # value2 = cell_two.value
-
-    # sheet.cell(14, 4, int(7) + int(8))
 
     # 开始我的表格计算
     # 本年累计数
     cell_e21 = sheet.cell(21, 5)
-    value1 = cell_e21.value
     cell_e40 = sheet.cell(40, 5)
+    check_none(cell_e21, cell_e40)
+    value1 = cell_e21.value
     value2 = cell_e40.value
     sheet.cell(42, 5, float(value1) - float(value2))
 
     cell_e46 = sheet.cell(46, 5)
-    value1 = cell_e46.value
     cell_e47 = sheet.cell(47, 5)
+    check_none(cell_e46, cell_e47)
+    value1 = cell_e46.value
     value2 = cell_e47.value
     sheet.cell(63, 5, (float(value1) + float(value2)) * float(0.5376))
 
     cell_e53 = sheet.cell(53, 5)
-    value3 = cell_e53.value
     cell_e55 = sheet.cell(55, 5)
+    check_none(cell_e53, cell_e55)
+    value3 = cell_e53.value
     value4 = cell_e55.value
     sheet.cell(64, 5, (float(value1) + float(value2)) * float(0.4624) + float(value3) + float(value4))
 
     cell_e51 = sheet.cell(51, 5)
-    value1 = cell_e51.value
     cell_e52 = sheet.cell(52, 5)
+    check_none(cell_e51, cell_e52)
+    value1 = cell_e51.value
     value2 = cell_e52.value
     sheet.cell(65, 5, float(value1) + float(value2))
 
     cell_e92 = sheet.cell(92, 5)
-    value1 = cell_e92.value
     cell_e94 = sheet.cell(94, 5)
+    check_none(cell_e92, cell_e94)
+    value1 = cell_e92.value
     value2 = cell_e94.value
     sheet.cell(96, 5, float(value1) - float(value2))
 
     cell_e99 = sheet.cell(99, 5)
-    value1 = cell_e99.value
     cell_e101 = sheet.cell(101, 5)
+    check_none(cell_e99, cell_e101)
+    value1 = cell_e99.value
     value2 = cell_e101.value
     sheet.cell(117, 5, (float(value1) + float(value2)) * float(0.5006))
 
     cell_e107 = sheet.cell(107, 5)
-    value3 = cell_e107.value
     cell_e109 = sheet.cell(109, 5)
+    check_none(cell_e107, cell_e109)
+    value3 = cell_e107.value
     value4 = cell_e109.value
     sheet.cell(119, 5, (float(value1) + float(value2)) * float(0.4994) + float(value3) + float(value4))
 
     cell_e105 = sheet.cell(105, 5)
-    value1 = cell_e105.value
     cell_e106 = sheet.cell(106, 5)
+    check_none(cell_e105, cell_e106)
+    value1 = cell_e105.value
     value2 = cell_e106.value
     sheet.cell(121, 5, float(value1) + float(value2))
 
     cell_e125 = sheet.cell(125, 5)
     cell_e126 = sheet.cell(126, 5)
+    check_none(cell_e126,cell_e125)
     cell_e126.value = cell_e125.value
 
     # 上年同期累计数
     cell_f21 = sheet.cell(21, 6)
-    value1 = cell_f21.value
     cell_f40 = sheet.cell(40, 6)
+    check_none(cell_f21, cell_f40)
+    value1 = cell_f21.value
     value2 = cell_f40.value
+    # 上年同期累计数
     sheet.cell(42, 6, float(value1) - float(value2))
 
+
     cell_f46 = sheet.cell(46, 6)
-    value1 = cell_f46.value
     cell_f47 = sheet.cell(47, 6)
+    check_none(cell_f46, cell_f47)
+    value1 = cell_f46.value
     value2 = cell_f47.value
     sheet.cell(63, 6, (float(value1) + float(value2)) * float(0.5376))
 
     cell_f53 = sheet.cell(53, 6)
-    value3 = cell_f53.value
     cell_f55 = sheet.cell(55, 6)
+    check_none(cell_f53, cell_f55)
+    value3 = cell_f53.value
     value4 = cell_f55.value
     sheet.cell(64, 6, (float(value1) + float(value2)) * float(0.4624) + float(value3) + float(value4))
 
     cell_f51 = sheet.cell(51, 6)
-    value1 = cell_f51.value
     cell_f52 = sheet.cell(52, 6)
+    check_none(cell_f51, cell_f52)
+    value1 = cell_f51.value
     value2 = cell_f52.value
     sheet.cell(65, 6, float(value1) + float(value2))
 
     cell_f92 = sheet.cell(92, 6)
-    value1 = cell_f92.value
     cell_f94 = sheet.cell(94, 6)
+    check_none(cell_f92, cell_f94)
+    value1 = cell_f92.value
     value2 = cell_f94.value
     sheet.cell(96, 6, float(value1) - float(value2))
 
     cell_f99 = sheet.cell(99, 6)
-    value1 = cell_f99.value
     cell_f101 = sheet.cell(101, 6)
+    check_none(cell_f99, cell_f101)
+    value1 = cell_f99.value
     value2 = cell_f101.value
     sheet.cell(117, 6, (float(value1) + float(value2)) * float(0.5006))
 
     cell_f107 = sheet.cell(107, 6)
-    value3 = cell_f107.value
     cell_f109 = sheet.cell(109, 6)
+    check_none(cell_f107, cell_f109)
+    value3 = cell_f107.value
     value4 = cell_f109.value
     sheet.cell(119, 6, (float(value1) + float(value2)) * float(0.4994) + float(value3) + float(value4))
 
     cell_f105 = sheet.cell(105, 6)
-    value1 = cell_f105.value
     cell_f106 = sheet.cell(106, 6)
+    check_none(cell_f105, cell_f106)
+    value1 = cell_f105.value
     value2 = cell_f106.value
     sheet.cell(121, 6, float(value1) + float(value2))
 
     cell_f125 = sheet.cell(125, 6)
     cell_f126 = sheet.cell(126, 6)
+    check_none(cell_f126,cell_f125)
     cell_f126.value = cell_f125.value
 
     route, manual_table_name = get_file_path(path, list_file_name, "空白表样")
-
     workbook.save(route)
-
     pass
-
 
 # 封装 根据文件名,sheet名,获取表格操作对象
 def get_workbook_sheet(path, list_file_name, file_name, sheet_name, read_only, data_only):
